@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diora Blockchain Explorer - Professional Network Monitor</title>
+    <meta name="description" content="Professional blockchain explorer for Diora network with real-time monitoring, wallet integration, and advanced analytics">
+    <meta name="keywords" content="diora, blockchain, explorer, ethereum, defi, web3, crypto">
+    
+    <!-- Professional CSS -->
+    <style>
+        :root {
+            --primary-dark: #0a0e27;
+            --secondary-dark: #151932;
+            --tertiary-dark: #1e2139;
+            --accent-blue: #1e40af;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-yellow: #f59e0b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #334155;
+            --bg-card: #1e293b;
+            --bg-hover: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Professional Header */
+        .header {
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .nav {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .nav-link.active {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .wallet-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), #2563eb);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Search Section */
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.25rem 4rem 1.25rem 1.5rem;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .search-btn:hover {
+            background: #2563eb;
+        }
+
+        /* Network Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-title {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-change {
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .stat-change.positive {
+            color: var(--accent-green);
+        }
+
+        .stat-change.negative {
+            color: var(--accent-red);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        /* Tables */
+        .table-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .table-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background: var(--secondary-dark);
+            padding: 1rem 2rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table td {
+            padding: 1.25rem 2rem;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+            font-size: 0.95rem;
+        }
+
+        .data-table tbody tr:hover {
+            background: var(--bg-hover);
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Links and Addresses */
+        .address-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+
+        .address-link:hover {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+
+        .tx-hash {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+
+        .tx-hash:hover {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent-yellow);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .badge-danger {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--accent-red);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .badge-info {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-dark);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem 2rem;
+            }
+
+            .data-table {
+                font-size: 0.875rem;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 1rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Professional Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">D</div>
+                <span>DIORA EXPLORER</span>
+            </a>
+            
+            <nav class="nav">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="#blocks" class="nav-link">Blocks</a>
+                <a href="#transactions" class="nav-link">Transactions</a>
+                <a href="#contracts" class="nav-link">Contracts</a>
+                <a href="#tokens" class="nav-link">Tokens</a>
+                <a href="#validators" class="nav-link">Validators</a>
+                <a href="#analytics" class="nav-link">Analytics</a>
+            </nav>
+
+            <div class="wallet-section">
+                <a href="#wallet" class="btn btn-primary">Connect Wallet</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Search -->
+    <section class="hero">
+        <h1 class="hero-title">Diora Blockchain Explorer</h1>
+        <p class="hero-subtitle">Professional network monitoring and analytics platform for Diora blockchain ecosystem</p>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search by address, transaction hash, block number, or token...">
+            <button class="search-btn">🔍</button>
+        </div>
+    </section>
+
+    <!-- Network Statistics -->
+    <div class="stats-grid">
+        <div class="stat-card fade-in">
+            <div class="stat-header">
+                <span class="stat-title">Latest Block</span>
+                <div class="stat-icon" style="background: linear-gradient(135deg, #1e40af, #3730a3);">BLK</div>
+            </div>
+            <div class="stat-value" id="latest-block">12,847</div>
+            <div class="stat-change positive">
+                <span>↑</span> <span>+1 every ~2s</span>
+            </div>
+        </div>
+
+        <div class="stat-card fade-in">
+            <div class="stat-header">
+                <span class="stat-title">Network TPS</span>
+                <div class="stat-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">TPS</div>
+            </div>
+            <div class="stat-value" id="tps">24.7</div>
+            <div class="stat-change positive">
+                <span>↑</span> <span>+12.5%</span>
+            </div>
+        </div>
+
+        <div class="stat-card fade-in">
+            <div class="stat-header">
+                <span class="stat-title">Avg Block Time</span>
+                <div class="stat-icon" style="background: linear-gradient(135deg, #10b981, #059669);">BT</div>
+            </div>
+            <div class="stat-value" id="block-time">2.1s</div>
+            <div class="stat-change positive">
+                <span>↓</span> <span>-0.1s</span>
+            </div>
+        </div>
+
+        <div class="stat-card fade-in">
+            <div class="stat-header">
+                <span class="stat-title">Total Transactions</span>
+                <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">TX</div>
+            </div>
+            <div class="stat-value" id="total-tx">3,847,291</div>
+            <div class="stat-change positive">
+                <span>↑</span> <span>+284 (24h)</span>
+            </div>
+        </div>
+
+        <div class="stat-card fade-in">
+            <div class="stat-header">
+                <span class="stat-title">Active Validators</span>
+                <div class="stat-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">VAL</div>
+            </div>
+            <div class="stat-value" id="validators">42</div>
+            <div class="stat-change positive">
+                <span>↑</span> <span>+2 this week</span>
+            </div>
+        </div>
+
+        <div class="stat-card fade-in">
+            <div class="stat-header">
+                <span class="stat-title">Network Load</span>
+                <div class="stat-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">LOAD</div>
+            </div>
+            <div class="stat-value" id="network-load">67%</div>
+            <div class="stat-change negative">
+                <span>↑</span> <span>+5.2%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Latest Transactions -->
+        <div class="table-container fade-in">
+            <div class="table-header">
+                <h2 class="table-title">Latest Transactions</h2>
+                <div class="table-actions">
+                    <a href="#transactions" class="btn btn-secondary">View All</a>
+                </div>
+            </div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Tx Hash</th>
+                        <th>Block</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Value</th>
+                        <th>Gas</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="#transaction" class="tx-hash">0x8f3c2a...</a>
+                        </td>
+                        <td>
+                            <a href="#block" class="address-link">#12847</a>
+                        </td>
+                        <td>
+                            <a href="#address" class="address-link">0x7d3a9b...</a>
+                        </td>
+                        <td>
+                            <a href="#address" class="address-link">0x9f2e8c...</a>
+                        </td>
+                        <td>
+                            <span class="amount positive">1,250.000000 DIO</span>
+                        </td>
+                        <td>21,000</td>
+                        <td>Jan 8, 21:45:32</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#transaction" class="tx-hash">0x2a7f8d...</a>
+                        </td>
+                        <td>
+                            <a href="#block" class="address-link">#12846</a>
+                        </td>
+                        <td>
+                            <a href="#address" class="address-link">0x4b6c2e...</a>
+                        </td>
+                        <td>
+                            <a href="#address" class="address-link">0x8e3f9a...</a>
+                        </td>
+                        <td>
+                            <span class="amount positive">500.000000 DIO</span>
+                        </td>
+                        <td>21,000</td>
+                        <td>Jan 8, 21:44:18</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#transaction" class="tx-hash">0x9c4d7b...</a>
+                        </td>
+                        <td>
+                            <a href="#block" class="address-link">#12845</a>
+                        </td>
+                        <td>
+                            <a href="#address" class="address-link">0x2e8a4f...</a>
+                        </td>
+                        <td>
+                            <a href="#address" class="address-link">0x7c3b9d...</a>
+                        </td>
+                        <td>
+                            <span class="amount positive">2,000.000000 DIO</span>
+                        </td>
+                        <td>21,000</td>
+                        <td>Jan 8, 21:43:05</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Latest Blocks -->
+        <div class="table-container fade-in">
+            <div class="table-header">
+                <h2 class="table-title">Latest Blocks</h2>
+                <div class="table-actions">
+                    <a href="#blocks" class="btn btn-secondary">View All</a>
+                </div>
+            </div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Block</th>
+                        <th>Hash</th>
+                        <th>Miner</th>
+                        <th>Txs</th>
+                        <th>Gas Used</th>
+                        <th>Gas Limit</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="#block" class="address-link">#12847</a>
+                        </td>
+                        <td>
+                            <a href="#block" class="tx-hash">0x7f3a9c...</a>
+                        </td>
+                        <td>
+                            <a href="#address" class="address-link">0x8e2b4f...</a>
+                        </td>
+                        <td>
+                            <span class="badge badge-info">127</span>
+                        </td>
+                        <td>2,670,000</td>
+                        <td>30,000,000</td>
+                        <td>Jan 8, 21:45:32</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#block" class="address-link">#12846</a>
+                        </td>
+                        <td>
+                            <a href="#block" class="tx-hash">0x4c8e2a...</a>
+                        </td>
+                        <td>
+                            <a href="#address" class="address-link">0x9f3b7c...</a>
+                        </td>
+                        <td>
+                            <span class="badge badge-info">89</span>
+                        </td>
+                        <td>1,869,000</td>
+                        <td>30,000,000</td>
+                        <td>Jan 8, 21:44:18</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#block" class="address-link">#12845</a>
+                        </td>
+                        <td>
+                            <a href="#block" class="tx-hash">0x2a7f9d...</a>
+                        </td>
+                        <td>
+                            <a href="#address" class="address-link">0x7c4e8b...</a>
+                        </td>
+                        <td>
+                            <span class="badge badge-info">156</span>
+                        </td>
+                        <td>3,276,000</td>
+                        <td>30,000,000</td>
+                        <td>Jan 8, 21:43:05</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Professional Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <div>
+                    <h4>Diora Network</h4>
+                    <p>Professional blockchain explorer providing real-time network monitoring and analytics for the Diora ecosystem.</p>
+                </div>
+                <div>
+                    <h4>API Access</h4>
+                    <p>Full API compatibility with Etherscan for seamless integration with existing tools and applications.</p>
+                </div>
+                <div>
+                    <h4>Security</h4>
+                    <p>Enterprise-grade security with rate limiting, audit logs, and comprehensive monitoring systems.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Diora Blockchain Explorer. Professional network monitoring platform.</p>
+                <p style="margin-top: 0.5rem;">
+                    <a href="https://github.com/DioraFund/diora-blockchain" class="address-link">GitHub</a> | 
+                    <a href="https://t.me/DioraFund" class="address-link">Telegram</a> | 
+                    <a href="https://twitter.com/DioraCrypto" class="address-link">Twitter</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Real-time updates simulation
+        setInterval(() => {
+            // Update block number
+            const blockElement = document.getElementById('latest-block');
+            const currentBlock = parseInt(blockElement.textContent.replace(',', ''));
+            blockElement.textContent = (currentBlock + 1).toLocaleString();
+            
+            // Update TPS
+            const tpsElement = document.getElementById('tps');
+            const currentTPS = parseFloat(tpsElement.textContent);
+            tpsElement.textContent = (currentTPS + (Math.random() - 0.5) * 2).toFixed(1);
+            
+            // Update network load
+            const loadElement = document.getElementById('network-load');
+            const currentLoad = parseInt(loadElement.textContent);
+            const newLoad = Math.max(15, Math.min(85, currentLoad + (Math.random() - 0.5) * 5));
+            loadElement.textContent = newLoad + '%';
+        }, 5000);
+
+        // Search functionality
+        document.querySelector('.search-input').addEventListener('input', function(e) {
+            const value = e.target.value;
+            if (value.length > 2) {
+                console.log('Searching for:', value);
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+        });
+    </script>
+</body>
+</html>
