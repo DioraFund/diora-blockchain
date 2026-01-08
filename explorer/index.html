@@ -1147,6 +1147,8 @@
     <script>
         // Page navigation
         function showPage(pageId) {
+            console.log('Showing page:', pageId);
+            
             // Hide all pages
             document.querySelectorAll('.page-content').forEach(page => {
                 page.style.display = 'none';
@@ -1156,6 +1158,9 @@
             const selectedPage = document.getElementById(pageId + '-page');
             if (selectedPage) {
                 selectedPage.style.display = 'block';
+                console.log('Found page element:', selectedPage);
+            } else {
+                console.error('Page not found:', pageId + '-page');
             }
             
             // Update navigation active state
@@ -1166,6 +1171,9 @@
             const activeLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
             if (activeLink) {
                 activeLink.classList.add('active');
+                console.log('Active link found:', activeLink);
+            } else {
+                console.error('Active link not found for:', pageId);
             }
             
             // Add fade-in animation
@@ -1261,7 +1269,20 @@
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded');
             showPage('home');
+            
+            // Add click listeners for navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('onclick').match(/showPage\('(.+?)'\)/)[1];
+                    if (pageId) {
+                        console.log('Clicked navigation for:', pageId);
+                        showPage(pageId);
+                    }
+                });
+            });
         });
     </script>
 </body>
