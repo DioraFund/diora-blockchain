@@ -1,10 +1,10 @@
-# Diora Blockchain - Independent Web3 Ecosystem
+# 🌐 ABM Diora Blockchain
 
-Diora is a modern, EVM-compatible Layer 1 blockchain built for community-driven growth, transparency, and digital value creation.
+Diora is a modern, EVM-compatible Layer 1 blockchain built for community-driven growth, transparency, and digital value creation by ABM Foundation.
 
 ## 🚀 Project Overview
 
-Diora is a comprehensive Web3 ecosystem featuring:
+ABM Diora is a comprehensive Web3 ecosystem featuring:
 
 - **EVM-Compatible Blockchain**: Full Ethereum Virtual Machine compatibility
 - **Proof-of-Stake Consensus**: Energy-efficient with DPoS delegation
