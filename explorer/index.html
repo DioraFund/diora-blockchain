@@ -543,17 +543,17 @@
             </a>
             
             <nav class="nav">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="#blocks" class="nav-link">Blocks</a>
-                <a href="#transactions" class="nav-link">Transactions</a>
-                <a href="#contracts" class="nav-link">Contracts</a>
-                <a href="#tokens" class="nav-link">Tokens</a>
-                <a href="#validators" class="nav-link">Validators</a>
-                <a href="#analytics" class="nav-link">Analytics</a>
+                <a href="#home" class="nav-link active" onclick="showPage('home')">Home</a>
+                <a href="#blocks" class="nav-link" onclick="showPage('blocks')">Blocks</a>
+                <a href="#transactions" class="nav-link" onclick="showPage('transactions')">Transactions</a>
+                <a href="#contracts" class="nav-link" onclick="showPage('contracts')">Contracts</a>
+                <a href="#tokens" class="nav-link" onclick="showPage('tokens')">Tokens</a>
+                <a href="#validators" class="nav-link" onclick="showPage('validators')">Validators</a>
+                <a href="#analytics" class="nav-link" onclick="showPage('analytics')">Analytics</a>
             </nav>
 
             <div class="wallet-section">
-                <a href="#wallet" class="btn btn-primary">Connect Wallet</a>
+                <a href="#wallet" class="btn btn-primary" onclick="showPage('wallet')">Connect Wallet</a>
             </div>
         </div>
     </header>
@@ -638,166 +638,476 @@
         </div>
     </div>
 
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Latest Transactions -->
-        <div class="table-container fade-in">
-            <div class="table-header">
-                <h2 class="table-title">Latest Transactions</h2>
-                <div class="table-actions">
-                    <a href="#transactions" class="btn btn-secondary">View All</a>
+    <!-- Main Content Container -->
+    <main class="container" id="main-content">
+        <!-- Home Page -->
+        <div id="home-page" class="page-content">
+            <!-- Latest Transactions -->
+            <div class="table-container fade-in">
+                <div class="table-header">
+                    <h2 class="table-title">Latest Transactions</h2>
+                    <div class="table-actions">
+                        <a href="#" onclick="showPage('transactions')" class="btn btn-secondary">View All</a>
+                    </div>
                 </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Tx Hash</th>
+                            <th>Block</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Value</th>
+                            <th>Gas</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" class="tx-hash">0x8f3c2a...</a></td>
+                            <td><a href="#" class="address-link">#12847</a></td>
+                            <td><a href="#" class="address-link">0x7d3a9b...</a></td>
+                            <td><a href="#" class="address-link">0x9f2e8c...</a></td>
+                            <td><span class="amount positive">1,250.000000 DIO</span></td>
+                            <td>21,000</td>
+                            <td>Jan 8, 21:45:32</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="tx-hash">0x2a7f8d...</a></td>
+                            <td><a href="#" class="address-link">#12846</a></td>
+                            <td><a href="#" class="address-link">0x4b6c2e...</a></td>
+                            <td><a href="#" class="address-link">0x8e3f9a...</a></td>
+                            <td><span class="amount positive">500.000000 DIO</span></td>
+                            <td>21,000</td>
+                            <td>Jan 8, 21:44:18</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="tx-hash">0x9c4d7b...</a></td>
+                            <td><a href="#" class="address-link">#12845</a></td>
+                            <td><a href="#" class="address-link">0x2e8a4f...</a></td>
+                            <td><a href="#" class="address-link">0x7c3b9d...</a></td>
+                            <td><span class="amount positive">2,000.000000 DIO</span></td>
+                            <td>21,000</td>
+                            <td>Jan 8, 21:43:05</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Tx Hash</th>
-                        <th>Block</th>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Value</th>
-                        <th>Gas</th>
-                        <th>Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <a href="#transaction" class="tx-hash">0x8f3c2a...</a>
-                        </td>
-                        <td>
-                            <a href="#block" class="address-link">#12847</a>
-                        </td>
-                        <td>
-                            <a href="#address" class="address-link">0x7d3a9b...</a>
-                        </td>
-                        <td>
-                            <a href="#address" class="address-link">0x9f2e8c...</a>
-                        </td>
-                        <td>
-                            <span class="amount positive">1,250.000000 DIO</span>
-                        </td>
-                        <td>21,000</td>
-                        <td>Jan 8, 21:45:32</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="#transaction" class="tx-hash">0x2a7f8d...</a>
-                        </td>
-                        <td>
-                            <a href="#block" class="address-link">#12846</a>
-                        </td>
-                        <td>
-                            <a href="#address" class="address-link">0x4b6c2e...</a>
-                        </td>
-                        <td>
-                            <a href="#address" class="address-link">0x8e3f9a...</a>
-                        </td>
-                        <td>
-                            <span class="amount positive">500.000000 DIO</span>
-                        </td>
-                        <td>21,000</td>
-                        <td>Jan 8, 21:44:18</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="#transaction" class="tx-hash">0x9c4d7b...</a>
-                        </td>
-                        <td>
-                            <a href="#block" class="address-link">#12845</a>
-                        </td>
-                        <td>
-                            <a href="#address" class="address-link">0x2e8a4f...</a>
-                        </td>
-                        <td>
-                            <a href="#address" class="address-link">0x7c3b9d...</a>
-                        </td>
-                        <td>
-                            <span class="amount positive">2,000.000000 DIO</span>
-                        </td>
-                        <td>21,000</td>
-                        <td>Jan 8, 21:43:05</td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <!-- Latest Blocks -->
+            <div class="table-container fade-in">
+                <div class="table-header">
+                    <h2 class="table-title">Latest Blocks</h2>
+                    <div class="table-actions">
+                        <a href="#" onclick="showPage('blocks')" class="btn btn-secondary">View All</a>
+                    </div>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Block</th>
+                            <th>Hash</th>
+                            <th>Miner</th>
+                            <th>Txs</th>
+                            <th>Gas Used</th>
+                            <th>Gas Limit</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" class="address-link">#12847</a></td>
+                            <td><a href="#" class="tx-hash">0x7f3a9c...</a></td>
+                            <td><a href="#" class="address-link">0x8e2b4f...</a></td>
+                            <td><span class="badge badge-info">127</span></td>
+                            <td>2,670,000</td>
+                            <td>30,000,000</td>
+                            <td>Jan 8, 21:45:32</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="address-link">#12846</a></td>
+                            <td><a href="#" class="tx-hash">0x4c8e2a...</a></td>
+                            <td><a href="#" class="address-link">0x9f3b7c...</a></td>
+                            <td><span class="badge badge-info">89</span></td>
+                            <td>1,869,000</td>
+                            <td>30,000,000</td>
+                            <td>Jan 8, 21:44:18</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="address-link">#12845</a></td>
+                            <td><a href="#" class="tx-hash">0x2a7f9d...</a></td>
+                            <td><a href="#" class="address-link">0x7c4e8b...</a></td>
+                            <td><span class="badge badge-info">156</span></td>
+                            <td>3,276,000</td>
+                            <td>30,000,000</td>
+                            <td>Jan 8, 21:43:05</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <!-- Latest Blocks -->
-        <div class="table-container fade-in">
-            <div class="table-header">
-                <h2 class="table-title">Latest Blocks</h2>
-                <div class="table-actions">
-                    <a href="#blocks" class="btn btn-secondary">View All</a>
+        <!-- Blocks Page -->
+        <div id="blocks-page" class="page-content" style="display: none;">
+            <div class="table-container fade-in">
+                <div class="table-header">
+                    <h2 class="table-title">Blocks</h2>
+                    <div class="table-actions">
+                        <select class="btn btn-secondary">
+                            <option>50 per page</option>
+                            <option>100 per page</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Block</th>
+                            <th>Hash</th>
+                            <th>Miner</th>
+                            <th>Txs</th>
+                            <th>Gas Used</th>
+                            <th>Gas Limit</th>
+                            <th>Reward</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" class="address-link">#12847</a></td>
+                            <td><a href="#" class="tx-hash">0x7f3a9c...</a></td>
+                            <td><a href="#" class="address-link">0x8e2b4f...</a></td>
+                            <td><span class="badge badge-info">127</span></td>
+                            <td>2,670,000</td>
+                            <td>30,000,000</td>
+                            <td>2 DIO</td>
+                            <td>Jan 8, 21:45:32</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="address-link">#12846</a></td>
+                            <td><a href="#" class="tx-hash">0x4c8e2a...</a></td>
+                            <td><a href="#" class="address-link">0x9f3b7c...</a></td>
+                            <td><span class="badge badge-info">89</span></td>
+                            <td>1,869,000</td>
+                            <td>30,000,000</td>
+                            <td>2 DIO</td>
+                            <td>Jan 8, 21:44:18</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Transactions Page -->
+        <div id="transactions-page" class="page-content" style="display: none;">
+            <div class="table-container fade-in">
+                <div class="table-header">
+                    <h2 class="table-title">Transactions</h2>
+                    <div class="table-actions">
+                        <input type="text" placeholder="Search by address or hash..." style="padding: 0.5rem 1rem; background: var(--secondary-dark); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary);">
+                        <select class="btn btn-secondary">
+                            <option>All Types</option>
+                            <option>Transfers</option>
+                            <option>Contract Calls</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Tx Hash</th>
+                            <th>Block</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Value</th>
+                            <th>Gas</th>
+                            <th>Status</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" class="tx-hash">0x8f3c2a...</a></td>
+                            <td><a href="#" class="address-link">#12847</a></td>
+                            <td><a href="#" class="address-link">0x7d3a9b...</a></td>
+                            <td><a href="#" class="address-link">0x9f2e8c...</a></td>
+                            <td><span class="amount positive">1,250.000000 DIO</span></td>
+                            <td>21,000</td>
+                            <td><span class="badge badge-success">Success</span></td>
+                            <td>Jan 8, 21:45:32</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="tx-hash">0x2a7f8d...</a></td>
+                            <td><a href="#" class="address-link">#12846</a></td>
+                            <td><a href="#" class="address-link">0x4b6c2e...</a></td>
+                            <td><a href="#" class="address-link">0x8e3f9a...</a></td>
+                            <td><span class="amount positive">500.000000 DIO</span></td>
+                            <td>21,000</td>
+                            <td><span class="badge badge-success">Success</span></td>
+                            <td>Jan 8, 21:44:18</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Contracts Page -->
+        <div id="contracts-page" class="page-content" style="display: none;">
+            <div class="table-container fade-in">
+                <div class="table-header">
+                    <h2 class="table-title">Smart Contracts</h2>
+                    <div class="table-actions">
+                        <a href="#" class="btn btn-primary">Verify Contract</a>
+                        <select class="btn btn-secondary">
+                            <option>All Contracts</option>
+                            <option>Verified Only</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Address</th>
+                            <th>Name</th>
+                            <th>Symbol</th>
+                            <th>Creator</th>
+                            <th>Txs</th>
+                            <th>Verified</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" class="address-link">0x123456...</a></td>
+                            <td><a href="#" style="color: var(--text-primary); text-decoration: none; font-weight: 600;">Diora Token</a></td>
+                            <td><span class="badge badge-info">DIO</span></td>
+                            <td><a href="#" class="address-link">0xabcdef...</a></td>
+                            <td>15,420</td>
+                            <td><span class="badge badge-success">Verified</span></td>
+                            <td>Jan 1, 12:00:00</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="address-link">0x234567...</a></td>
+                            <td><a href="#" style="color: var(--text-primary); text-decoration: none; font-weight: 600;">Uniswap Router</a></td>
+                            <td><span class="badge badge-info">UNI-V2</span></td>
+                            <td><a href="#" class="address-link">0xbcdefa...</a></td>
+                            <td>8,934</td>
+                            <td><span class="badge badge-success">Verified</span></td>
+                            <td>Jan 2, 15:30:00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tokens Page -->
+        <div id="tokens-page" class="page-content" style="display: none;">
+            <div class="table-container fade-in">
+                <div class="table-header">
+                    <h2 class="table-title">Tokens</h2>
+                    <div class="table-actions">
+                        <input type="text" placeholder="Search tokens..." style="padding: 0.5rem 1rem; background: var(--secondary-dark); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary);">
+                        <select class="btn btn-secondary">
+                            <option>All Tokens</option>
+                            <option>ERC-20</option>
+                            <option>ERC-721</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Market Cap</th>
+                            <th>Volume (24h)</th>
+                            <th>Change (24h)</th>
+                            <th>Holders</th>
+                            <th>Total Supply</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan)); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.875rem;">DIO</div>
+                                    <div>
+                                        <div style="font-weight: 600; color: var(--text-primary);">Diora</div>
+                                        <div style="font-size: 0.875rem; color: var(--text-secondary);"><a href="#" class="address-link">0x000000...</a></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="font-weight: 600;">$0.00</div>
+                                <div style="font-size: 0.875rem; color: var(--text-secondary);">DIO</div>
+                            </td>
+                            <td>$0</td>
+                            <td>$0</td>
+                            <td><span class="stat-change positive">0.00%</span></td>
+                            <td>15,420</td>
+                            <td>1,000,000,000 DIO</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Validators Page -->
+        <div id="validators-page" class="page-content" style="display: none;">
+            <div class="table-container fade-in">
+                <div class="table-header">
+                    <h2 class="table-title">Validators</h2>
+                    <div class="table-actions">
+                        <select class="btn btn-secondary">
+                            <option>All Validators</option>
+                            <option>Active Only</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Validator</th>
+                            <th>Status</th>
+                            <th>Staked</th>
+                            <th>Commission</th>
+                            <th>APR</th>
+                            <th>Uptime</th>
+                            <th>Delegators</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan)); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.875rem;">V</div>
+                                    <div>
+                                        <div style="font-weight: 600; color: var(--text-primary);">Validator #1</div>
+                                        <div style="font-size: 0.875rem; color: var(--text-secondary);"><a href="#" class="address-link">0x8e2b4f...</a></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>
+                                <div style="font-weight: 600;">5,000,000 DIO</div>
+                                <div style="font-size: 0.875rem; color: var(--text-secondary);">$50,000</div>
+                            </td>
+                            <td>5%</td>
+                            <td><div style="font-weight: 600; color: var(--accent-green);">8.5%</div></td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 40px; height: 4px; background: var(--border-color); border-radius: 2px; overflow: hidden;">
+                                        <div style="width: 99%; height: 100%; background: var(--accent-green);"></div>
+                                    </div>
+                                    <span style="font-size: 0.875rem;">99.2%</span>
+                                </div>
+                            </td>
+                            <td>127</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 40px; height: 4px; background: var(--border-color); border-radius: 2px; overflow: hidden;">
+                                        <div style="width: 95%; height: 100%; background: var(--accent-green);"></div>
+                                    </div>
+                                    <span style="font-size: 0.875rem;">95%</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Analytics Page -->
+        <div id="analytics-page" class="page-content" style="display: none;">
+            <div class="table-container fade-in">
+                <div class="table-header">
+                    <h2 class="table-title">Network Analytics</h2>
+                    <div class="table-actions">
+                        <select class="btn btn-secondary">
+                            <option>Last 24 Hours</option>
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="padding: 2rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                        <div style="background: var(--secondary-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Total Blocks</h4>
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-blue);">12,847</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">Avg time: 2.1s</div>
+                        </div>
+                        
+                        <div style="background: var(--secondary-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Total Transactions</h4>
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-green);">3,847,291</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">All time</div>
+                        </div>
+                        
+                        <div style="background: var(--secondary-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Active Addresses</h4>
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-cyan);">15,420</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">Unique addresses</div>
+                        </div>
+                        
+                        <div style="background: var(--secondary-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Network Hashrate</h4>
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-yellow);">1.2 TH/s</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">Current</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Block</th>
-                        <th>Hash</th>
-                        <th>Miner</th>
-                        <th>Txs</th>
-                        <th>Gas Used</th>
-                        <th>Gas Limit</th>
-                        <th>Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <a href="#block" class="address-link">#12847</a>
-                        </td>
-                        <td>
-                            <a href="#block" class="tx-hash">0x7f3a9c...</a>
-                        </td>
-                        <td>
-                            <a href="#address" class="address-link">0x8e2b4f...</a>
-                        </td>
-                        <td>
-                            <span class="badge badge-info">127</span>
-                        </td>
-                        <td>2,670,000</td>
-                        <td>30,000,000</td>
-                        <td>Jan 8, 21:45:32</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="#block" class="address-link">#12846</a>
-                        </td>
-                        <td>
-                            <a href="#block" class="tx-hash">0x4c8e2a...</a>
-                        </td>
-                        <td>
-                            <a href="#address" class="address-link">0x9f3b7c...</a>
-                        </td>
-                        <td>
-                            <span class="badge badge-info">89</span>
-                        </td>
-                        <td>1,869,000</td>
-                        <td>30,000,000</td>
-                        <td>Jan 8, 21:44:18</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="#block" class="address-link">#12845</a>
-                        </td>
-                        <td>
-                            <a href="#block" class="tx-hash">0x2a7f9d...</a>
-                        </td>
-                        <td>
-                            <a href="#address" class="address-link">0x7c4e8b...</a>
-                        </td>
-                        <td>
-                            <span class="badge badge-info">156</span>
-                        </td>
-                        <td>3,276,000</td>
-                        <td>30,000,000</td>
-                        <td>Jan 8, 21:43:05</td>
-                    </tr>
-                </tbody>
-            </table>
+        </div>
+
+        <!-- Wallet Page -->
+        <div id="wallet-page" class="page-content" style="display: none;">
+            <div class="table-container fade-in">
+                <div class="table-header">
+                    <h2 class="table-title">Diora Wallet</h2>
+                </div>
+                
+                <div style="padding: 2rem;">
+                    <div style="text-align: center;">
+                        <h3 style="margin-bottom: 2rem;">Connect Your Wallet</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Secure, non-custodial wallet for managing your DIO tokens</p>
+                        
+                        <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
+                            <button onclick="createWallet()" class="btn btn-primary">Create New Wallet</button>
+                            <button onclick="importWallet()" class="btn btn-secondary">Import Wallet</button>
+                        </div>
+                        
+                        <div id="wallet-info" style="display: none;">
+                            <div style="background: var(--secondary-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; margin-top: 2rem;">
+                                <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Wallet Information</h4>
+                                <div style="display: grid; gap: 1rem;">
+                                    <div>
+                                        <span style="color: var(--text-secondary);">Address:</span>
+                                        <div id="wallet-address" class="address-link" style="margin-top: 0.25rem;"></div>
+                                    </div>
+                                    <div>
+                                        <span style="color: var(--text-secondary);">Balance:</span>
+                                        <div id="wallet-balance" style="margin-top: 0.25rem; font-weight: 600;"></div>
+                                    </div>
+                                    <div>
+                                        <span style="color: var(--text-secondary);">Private Key:</span>
+                                        <div id="wallet-private-key" style="margin-top: 0.25rem; font-family: monospace; font-size: 0.875rem; color: var(--accent-red);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -808,6 +1118,7 @@
                 <div>
                     <h4>Diora Network</h4>
                     <p>Professional blockchain explorer providing real-time network monitoring and analytics for the Diora ecosystem.</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.875rem;"><strong>© 2026 ABM Foundation</strong>. All rights reserved.</p>
                 </div>
                 <div>
                     <h4>API Access</h4>
@@ -819,11 +1130,14 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Diora Blockchain Explorer. Professional network monitoring platform.</p>
+                <p>© 2026 ABM Foundation - Diora Blockchain Explorer. Professional network monitoring platform.</p>
                 <p style="margin-top: 0.5rem;">
                     <a href="https://github.com/DioraFund/diora-blockchain" class="address-link">GitHub</a> | 
                     <a href="https://t.me/DioraFund" class="address-link">Telegram</a> | 
                     <a href="https://twitter.com/DioraCrypto" class="address-link">Twitter</a>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-muted);">
+                    Powered by <strong>ABM Foundation</strong> | Built with ❤️ for the Diora ecosystem
                 </p>
             </div>
         </div>
@@ -831,23 +1145,87 @@
 
     <!-- JavaScript -->
     <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Show selected page
+            const selectedPage = document.getElementById(pageId + '-page');
+            if (selectedPage) {
+                selectedPage.style.display = 'block';
+            }
+            
+            // Update navigation active state
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const activeLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Add fade-in animation
+            if (selectedPage) {
+                selectedPage.classList.add('fade-in');
+            }
+        }
+
+        // Wallet functions
+        function createWallet() {
+            const address = '0x' + Array(40).fill(0).map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+            const privateKey = '0x' + Array(64).fill(0).map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+            
+            document.getElementById('wallet-address').textContent = address;
+            document.getElementById('wallet-balance').textContent = '1,000.000000 DIO';
+            document.getElementById('wallet-private-key').textContent = privateKey;
+            document.getElementById('wallet-info').style.display = 'block';
+            
+            alert('Wallet created successfully! Save your private key securely.');
+        }
+
+        function importWallet() {
+            const privateKey = prompt('Enter your private key:');
+            if (privateKey && privateKey.startsWith('0x') && privateKey.length === 66) {
+                const address = '0x' + Array(40).fill(0).map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+                
+                document.getElementById('wallet-address').textContent = address;
+                document.getElementById('wallet-balance').textContent = '500.000000 DIO';
+                document.getElementById('wallet-private-key').textContent = privateKey;
+                document.getElementById('wallet-info').style.display = 'block';
+                
+                alert('Wallet imported successfully!');
+            } else {
+                alert('Invalid private key format. Please enter a valid 66-character hex string starting with 0x.');
+            }
+        }
+
         // Real-time updates simulation
         setInterval(() => {
             // Update block number
             const blockElement = document.getElementById('latest-block');
-            const currentBlock = parseInt(blockElement.textContent.replace(',', ''));
-            blockElement.textContent = (currentBlock + 1).toLocaleString();
+            if (blockElement) {
+                const currentBlock = parseInt(blockElement.textContent.replace(',', ''));
+                blockElement.textContent = (currentBlock + 1).toLocaleString();
+            }
             
             // Update TPS
             const tpsElement = document.getElementById('tps');
-            const currentTPS = parseFloat(tpsElement.textContent);
-            tpsElement.textContent = (currentTPS + (Math.random() - 0.5) * 2).toFixed(1);
+            if (tpsElement) {
+                const currentTPS = parseFloat(tpsElement.textContent);
+                tpsElement.textContent = (currentTPS + (Math.random() - 0.5) * 2).toFixed(1);
+            }
             
             // Update network load
             const loadElement = document.getElementById('network-load');
-            const currentLoad = parseInt(loadElement.textContent);
-            const newLoad = Math.max(15, Math.min(85, currentLoad + (Math.random() - 0.5) * 5));
-            loadElement.textContent = newLoad + '%';
+            if (loadElement) {
+                const currentLoad = parseInt(loadElement.textContent);
+                const newLoad = Math.max(15, Math.min(85, currentLoad + (Math.random() - 0.5) * 5));
+                loadElement.textContent = newLoad + '%';
+            }
         }, 5000);
 
         // Search functionality
@@ -855,6 +1233,7 @@
             const value = e.target.value;
             if (value.length > 2) {
                 console.log('Searching for:', value);
+                // Implement search logic here
             }
         });
 
@@ -878,6 +1257,11 @@
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(-2px)';
             });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
         });
     </script>
 </body>
