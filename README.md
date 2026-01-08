@@ -197,7 +197,9 @@ We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md)
 
 ## 📄 License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+**Copyright (c) 2026 ABM Foundation**
 
 ## 🎯 Roadmap
 
