@@ -179,10 +179,10 @@ diora contract deploy MyContract.sol
 
 ## 🌍 Community
 
-- **Discord**: [discord.gg/diora](https://discord.gg/diora)
-- **Telegram**: [t.me/diorablockchain](https://t.me/diorablockchain)
-- **Twitter**: [@diora_chain](https://twitter.com/diora_chain)
-- **GitHub**: [github.com/diora-blockchain](https://github.com/diora-blockchain)
+- **Discord**: [Coming Soon](#)
+- **Telegram**: [@DioraFund](https://t.me/DioraFund)
+- **Twitter**: [@DioraCrypto](https://twitter.com/DioraCrypto)
+- **GitHub**: [github.com/DioraFund](https://github.com/DioraFund)
 
 ## 🤝 Contributing
 

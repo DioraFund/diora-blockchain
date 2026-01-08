@@ -126,6 +126,12 @@ gh api repos/DioraFund/diora-blockchain/pages -X PATCH -f cname=explorer.diora.i
 3. Настройте мониторинг
 4. Рассмотрите VPS для продакшена
 
+### 📞 Контакты:
+- 📧 Email: support@diora.io
+- 💬 Discord: [Coming Soon](#)
+- 🐦 Twitter: [@DioraCrypto](https://twitter.com/DioraCrypto)
+- 📱 Telegram: [@DioraFund](https://t.me/DioraFund)
+
 ---
 
 **🎉 Поздравляю! Diora Blockchain Explorer теперь в сети и готов к использованию!**

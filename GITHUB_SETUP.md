@@ -177,8 +177,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - 📧 Email: support@diora.io
-- 💬 Discord: [Join our community]
-- 🐦 Twitter: @DioraNetwork
+- 💬 Discord: [Coming Soon](#)
+- 🐦 Twitter: [@DioraCrypto](https://twitter.com/DioraCrypto)
+- 📱 Telegram: [@DioraFund](https://t.me/DioraFund)
 
 ---
 
